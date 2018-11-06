@@ -1,0 +1,15 @@
+<h2>My tasks</h2>
+<ul>
+  <% @tasks.each do |task|%>
+    <li>
+      <i class="far <%= task.completed? ? 'fa-thumbs-up' : 'fa-thumbs-down'%>"></i>
+      <%=link_to task.title, task_path(task)%>
+      <%= link_to delete_task_path(task), method: :delete, data: { confirm: "Are you sure?" } do %>
+        <i class="far fa-trash-alt"></i>
+      <% end %>
+    </li>
+ <% end %>
+</ul>
+
+<p><i class="fas fa-plus"></i><%= link_to "Add a new task", tasks_new_path %> </p>
+
